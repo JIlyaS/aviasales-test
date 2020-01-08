@@ -1,0 +1,11 @@
+.app {
+  max-width: 776px;
+  margin: 0 auto;
+  margin-bottom: 120px;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
