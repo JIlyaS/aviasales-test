@@ -1,8 +1,15 @@
 .filterList {
-  width: 232px;
+  width: 100%;
+  margin-bottom: 20px;
+
   background: #FFFFFF;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+
+  @media (min-width: 900px) {
+    width: 232px;
+    margin-bottom: 0;
+  }
 
   &__container {
     padding: 20px 0;
@@ -11,12 +18,20 @@
   &__header {
     margin: 0;
     margin-bottom: 20px;
-    padding-left: 20px;
     font-size: 12px;
     line-height: 12px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: #4A4A4A;
+    text-align: center;
+
+    @media (min-width: 450px) {
+      padding-left: 20px;
+    }
+
+    @media (min-width: 900px) {
+      text-align: left;
+    }
   }
 
   & input:checked ~ .filterList__label_text::after {
@@ -33,6 +48,25 @@
 
   & input:checked ~ .filterList__label_text::before {
     border-color: #2196F3;
+  }
+
+  &__block {
+    padding: 0 20px;
+    @media (min-width: 900px) {
+      padding: 0;
+    }
+  }
+
+  &__group {
+    display: block;
+
+    @media (min-width: 450px) {
+      display: inline-block;
+    }
+
+    @media (min-width: 900px) {
+      display: block;
+    }
   }
 
   &__label {

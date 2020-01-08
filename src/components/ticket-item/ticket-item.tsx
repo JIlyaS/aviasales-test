@@ -11,56 +11,62 @@ const TicketItem: React.FC = () => {
         </div>
         <div className={styles.ticketItem__wrap_content}>
           <div className={styles.ticketItem__block}>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                MOW – HKT
-              </span>
-              <span className={styles.ticketItem__text}>
-                10:45 – 08:00
-              </span>
+            <div className={styles.ticketItem__block_wrap}>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  MOW – HKT
+                </span>
+                <span className={styles.ticketItem__text}>
+                  10:45 – 08:00
+                </span>
+              </div>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  В пути
+                </span>
+                <span className={styles.ticketItem__text}>
+                  21ч 15м
+                </span>
+              </div>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  2 пересадки
+                </span>
+                <span className={styles.ticketItem__text}>
+                  HKG, JNB
+                </span>
+              </div>
             </div>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                В пути
-              </span>
-              <span className={styles.ticketItem__text}>
-                21ч 15м
-              </span>
-            </div>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                2 пересадки
-              </span>
-              <span className={styles.ticketItem__text}>
-                HKG, JNB
-              </span>
-            </div>
+            <button className={styles.ticketItem__btn_details} type="button">1 пересадка</button>
           </div>
           <div className={styles.ticketItem__block}>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                MOW – HKT
-              </span>
-              <span className={styles.ticketItem__text}>
-                11:20 – 00:50
-              </span>
+            <div className={styles.ticketItem__block_wrap}>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  MOW – HKT
+                </span>
+                <span className={styles.ticketItem__text}>
+                  11:20 – 00:50
+                </span>
+              </div>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  В пути
+                </span>
+                <span className={styles.ticketItem__text}>
+                  13ч 30м
+                </span>
+              </div>
+              <div className={styles.ticketItem__content}>
+                <span className={styles.ticketItem__title}>
+                  1 пересадка
+                </span>
+                <span className={styles.ticketItem__text}>
+                  HKG
+                </span>
+              </div>
             </div>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                В пути
-              </span>
-              <span className={styles.ticketItem__text}>
-                13ч 30м
-              </span>
-            </div>
-            <div className={styles.ticketItem__content}>
-              <span className={styles.ticketItem__title}>
-                1 пересадка
-              </span>
-              <span className={styles.ticketItem__text}>
-                HKG
-              </span>
-            </div>
+            <button className={styles.ticketItem__btn_details} type="button">2 пересадки</button>
           </div>
         </div>
       </div>

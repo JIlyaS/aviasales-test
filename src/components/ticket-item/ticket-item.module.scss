@@ -1,5 +1,5 @@
 .ticketItem {
-  width: 502px;
+  max-width: 502px;
   margin-bottom: 20px;
   background: #FFFFFF;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
@@ -7,7 +7,11 @@
 
   &__container {
     height: 100%;
-    padding: 20px 50px 20px 20px;
+    padding: 20px 20px 20px 20px;
+
+    @media (min-width: 450px) {
+      padding: 20px 50px 20px 20px;
+    }
   }
 
   &__top_block {
@@ -19,14 +23,23 @@
   }
 
   &__cost {
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 20px;
     color: #2196F3;
+
+    @media (min-width: 450px) {
+      font-size: 24px;
+      line-height: 24px;
+    }
   }
 
-  &__block {
-    display: flex;
+  &__block_wrap {
+    display: none;
     justify-content: space-between;
+
+    @media (min-width: 450px) {
+      display: flex;
+    }
   }
 
   &__content {
@@ -47,5 +60,32 @@
     font-size: 14px;
     line-height: 21px;
     color: #4A4A4A;
+  }
+
+  &__btn_details {
+    display: block;
+    width: 100%;
+    height: 35px;
+    margin-bottom: 10px;
+    border: 1px solid #E5E5E5;
+
+    font-size: 12px;
+    line-height: 20px;
+    background: #ffffff;
+    text-transform: uppercase;
+    color: #4A4A4A;
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #FFFFFF;
+      background: #2196F3;
+      border-color: #2196F3;
+    }
+
+    @media (min-width: 450px) {
+      display: none;
+    }
   }
 }

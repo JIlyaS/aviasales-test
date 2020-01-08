@@ -1,11 +1,22 @@
 .app {
-  max-width: 776px;
+  max-width: 505px;
   margin: 0 auto;
   margin-bottom: 120px;
+
+  @media (min-width: 900px) {
+    max-width: 816px;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
+    margin: 0 20px;
+
+    @media (min-width: 900px) {
+      flex-direction: row;
+    }
   }
 }
 
