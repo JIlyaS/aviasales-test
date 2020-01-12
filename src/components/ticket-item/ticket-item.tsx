@@ -1,77 +1,55 @@
-import React from 'react';
+import React, {Component} from 'react';
+import moment from 'moment';
+
+import {TicketInterface} from '../../types/types';
+import {transformDirationTime} from '../../utils';
 import styles from './ticket-item.module.scss';
 
-const TicketItem: React.FC = () => {
-  return (
-    <article className={styles.ticketItem}>
-      <div className={styles.ticketItem__container}>
-        <div className={styles.ticketItem__top_block}>
-          <span className={styles.ticketItem__cost}>13400 P</span>
-          <img className={styles.ticketItem__company_img} src="./img/company-logo.svg" width="110" height="36" alt="Логотип компании"/>
-        </div>
-        <div className={styles.ticketItem__wrap_content}>
-          <div className={styles.ticketItem__block}>
-            <div className={styles.ticketItem__block_wrap}>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  MOW – HKT
-                </span>
-                <span className={styles.ticketItem__text}>
-                  10:45 – 08:00
-                </span>
-              </div>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  В пути
-                </span>
-                <span className={styles.ticketItem__text}>
-                  21ч 15м
-                </span>
-              </div>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  2 пересадки
-                </span>
-                <span className={styles.ticketItem__text}>
-                  HKG, JNB
-                </span>
-              </div>
-            </div>
-            <button className={styles.ticketItem__btn_details} type="button">1 пересадка</button>
+class TicketItem extends Component<TicketInterface, {isInfoActive: Boolean}> {
+
+  render() {
+    const {price, carrier, segments} = this.props;
+    return (
+      <article className={styles.ticketItem}>
+        <div className={styles.ticketItem__container}>
+          <div className={styles.ticketItem__top_block}>
+            <span className={styles.ticketItem__cost}>{price} P</span>
+            <img className={styles.ticketItem__company_img} src={`//pics.avs.io/99/36/${carrier}.png`} alt="Логотип компании"/>
           </div>
-          <div className={styles.ticketItem__block}>
-            <div className={styles.ticketItem__block_wrap}>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  MOW – HKT
-                </span>
-                <span className={styles.ticketItem__text}>
-                  11:20 – 00:50
-                </span>
+          <div className={styles.ticketItem__wrap_content}>
+            {segments.map(({origin, destination, duration, stops, date}, index) => 
+              <div className={styles.ticketItem__block} key={index}>
+                  <div className={styles.ticketItem__content}>
+                    <span className={styles.ticketItem__title}>
+                      {origin} – {destination}
+                    </span>
+                    <span className={styles.ticketItem__text}>
+                      {`${moment(date).format('HH:mm')} - ${moment(date).add(duration, 'm').format('HH:mm')}`}
+                    </span>
+                  </div>
+                  <div className={styles.ticketItem__content}>
+                    <span className={styles.ticketItem__title}>
+                      В пути
+                    </span>
+                    <span className={styles.ticketItem__text}>
+                      {transformDirationTime(duration)}
+                    </span>
+                  </div>
+                  <div className={styles.ticketItem__content}>
+                    <span className={styles.ticketItem__title}>
+                      {stops.length} пересадки
+                    </span>
+                    <span className={styles.ticketItem__text}>
+                      {(stops.map((stop: String) => stop)).join(', ')}
+                    </span>
+                  </div>
               </div>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  В пути
-                </span>
-                <span className={styles.ticketItem__text}>
-                  13ч 30м
-                </span>
-              </div>
-              <div className={styles.ticketItem__content}>
-                <span className={styles.ticketItem__title}>
-                  1 пересадка
-                </span>
-                <span className={styles.ticketItem__text}>
-                  HKG
-                </span>
-              </div>
-            </div>
-            <button className={styles.ticketItem__btn_details} type="button">2 пересадки</button>
+            )}
           </div>
         </div>
-      </div>
-    </article>
-  );
+      </article>
+    );
+  }
 }
 
 export default TicketItem;

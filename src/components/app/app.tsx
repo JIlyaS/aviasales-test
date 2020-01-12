@@ -4,7 +4,7 @@ import FilterList from '../filter-list/filter-list';
 import Main from '../main/main';
 import styles from './app.module.scss';
 
-const App: React.FC = () => {
+const App: React.FC = (props) => {
   return (
     <div className={styles.app}>
       <Header />
