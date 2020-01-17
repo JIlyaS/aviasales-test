@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react';
 
 import LoadingBlock from '../loading-block/loading-block';
 import ErrorBlock from '../error-block/error-block';
+import EmptyBlock from '../empty-block/empty-block';
 import TicketItem from '../ticket-item/ticket-item';
 import styles from './ticket-list.module.scss';
 
@@ -14,6 +15,10 @@ const TicketList = inject('ticketStore')(observer(({ticketStore: {isTicketsLoadi
 
   if (isTicketsLoading) {
     return <LoadingBlock />;
+  }
+
+  if (tickets.length === 0) {
+    return <EmptyBlock />;
   }
 
   return (
