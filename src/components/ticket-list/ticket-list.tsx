@@ -6,13 +6,13 @@ import ErrorBlock from '../error-block/error-block';
 import TicketItem from '../ticket-item/ticket-item';
 import styles from './ticket-list.module.scss';
 
-const TicketList = inject('ticketStore')(observer(({ticketStore: {isLoadTicketError, tickets}}) => {
+const TicketList = inject('ticketStore')(observer(({ticketStore: {isTicketsLoading, isLoadTicketError, tickets}}) => {
   
   if (isLoadTicketError) {
     return <ErrorBlock />;
   }
 
-  if (!tickets.length) {
+  if (isTicketsLoading) {
     return <LoadingBlock />;
   }
 
