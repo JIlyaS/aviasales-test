@@ -7,8 +7,8 @@ import EmptyBlock from '../empty-block/empty-block';
 import TicketItem from '../ticket-item/ticket-item';
 import styles from './ticket-list.module.scss';
 
-const TicketList = inject('ticketStore')(observer(({ticketStore: {isTicketsLoading, isLoadTicketError, tickets}}) => {
-  
+const TicketList = inject('ticketStore')(observer(({ticketStore: {isTicketsLoading, isLoadTicketError, tickets, scrollTicketList}}) => {
+
   if (isLoadTicketError) {
     return <ErrorBlock />;
   }
@@ -22,9 +22,9 @@ const TicketList = inject('ticketStore')(observer(({ticketStore: {isTicketsLoadi
   }
 
   return (
-    <div className={styles.ticketList}>
+    <div id="scrollableDiv" className={styles.ticketList}>
       {
-       tickets.map((ticket: Array<object> | any, index: number) => <TicketItem key={index} {...ticket} />) 
+        tickets.map((ticket: Array<object> | any, index: number) => <TicketItem key={index} {...ticket} />)
       }
     </div>
   );
