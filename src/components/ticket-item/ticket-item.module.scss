@@ -1,0 +1,78 @@
+.ticketItem {
+  max-width: 502px;
+  margin-bottom: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  &__container {
+    height: 100%;
+    padding: 20px 20px 20px 20px;
+
+    @media (min-width: 450px) {
+      padding: 20px 50px 20px 20px;
+    }
+  }
+
+  &__top_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+  }
+
+  &__cost {
+    font-size: 20px;
+    line-height: 20px;
+    color: #2196F3;
+
+    @media (min-width: 450px) {
+      font-size: 24px;
+      line-height: 24px;
+    }
+  }
+
+  &__wrap_content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @media (min-width: 450px) {
+      display: block;
+    }
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50%;
+
+    @media (min-width: 450px) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__content {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #A0B0B9;
+  }
+
+  &__text {
+    display: block;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4A4A4A;
+  }
+}
