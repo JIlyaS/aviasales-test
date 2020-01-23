@@ -1,0 +1,4 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://jilyas:aa11bb22cc33@cluster0-px3n6.azure.mongodb.net/aviasales?retryWrites=true&w=majority"
+}

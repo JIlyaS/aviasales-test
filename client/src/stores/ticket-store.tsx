@@ -18,36 +18,39 @@ class TicketStore {
   isTicketsLoading: Boolean = false;
 
   loadTickets() {
-    this.isTicketsLoading = true;
-    setTimeout(() => {
-      return api.get('/tickets').then((response) => {
-        if (response.data) {
-          runInAction(() => {
-            this.isTicketsLoading = false;
-            response.data = response.data.map((data: any) => ({id: uuidv1(), ...data}));
-            this.tickets = response.data.sort((prev: {price: any}, curr: {price: any}) => {
-              return prev.price - curr.price;
-            });
-            this.originalTickets = this.tickets;
+    this.setTicketsLoading(true);
+    return api.get('/api/tickets').then((response) => {
+      if (response.data) {
+        runInAction(() => {
+          this.setTicketsLoading(false);
+          response.data = response.data.map((data: any) => ({id: uuidv1(), ...data}));
+          this.tickets = response.data.slice(0, 5).sort((prev: {price: any}, curr: {price: any}) => {
+            return prev.price - curr.price;
           });
-        }
-      })
-      .catch((error) => {
-        this.isTicketsLoading = false;
-        this.setLoadTicketError();
-        console.log(error);
-      });
-    }, 2000);
+          this.originalTickets = this.tickets;
+        });
+      }
+    })
+    .catch((error) => {
+      this.setTicketsLoading(false);
+      this.setLoadTicketError();
+      console.log(error);
+    });
   }
 
   setLoadTicketError() {
     this.isLoadTicketError = true;
+  }
+
+  setTicketsLoading(isLoad: Boolean) {
+    this.isTicketsLoading = isLoad;
   }
 }
 
 decorate(TicketStore, {
   loadTickets: action.bound,
   setLoadTicketError: action.bound,
+  setTicketsLoading: action.bound,
   tickets: observable.shallow,
   isLoadTicketError: observable,
   originalTickets: observable,
