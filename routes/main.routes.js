@@ -1,4 +1,5 @@
 const fs = require('fs');
+const Tickets = require('../models/Tickets');
 
 const {Router} = require('express');
 
@@ -6,9 +7,8 @@ const router = Router();
 
 router.get('/tickets', async (req, res) => {
   try {
-    const data = fs.readFileSync('./mock/tickets.json', "utf8");
-    const tickets = JSON.parse(data);
-    res.send(tickets.tickets);
+    const ticketsData = await Tickets.find({});
+    res.send(ticketsData);
   } catch (err) {
     res.status(500).json({ message: err})
   }

@@ -24,7 +24,7 @@ class TicketStore {
         runInAction(() => {
           this.setTicketsLoading(false);
           response.data = response.data.map((data: any) => ({id: uuidv1(), ...data}));
-          this.tickets = response.data.slice(0, 5).sort((prev: {price: any}, curr: {price: any}) => {
+          this.tickets = response.data.sort((prev: {price: any}, curr: {price: any}) => {
             return prev.price - curr.price;
           });
           this.originalTickets = this.tickets;

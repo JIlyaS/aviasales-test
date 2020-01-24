@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
 const cors = require('cors');
+const Tickets = require('./models/Tickets');
 
 const app = express();
 
